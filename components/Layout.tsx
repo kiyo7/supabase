@@ -1,4 +1,4 @@
-import { ReactNode } from 'React'
+import { ReactNode } from 'react'
 import Head from 'next/head'
 import { BadgeCheckIcon } from '@heroicons/react/solid'
 

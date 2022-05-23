@@ -7,7 +7,7 @@ import { supabase } from '../utils/supabase'
 import { Task, Notice } from '../types/types'
 
 export const getStaticProps: GetStaticProps = async () => {
-  console.log('getStaticProps/ssg invoked')
+  console.log('getStaticProps/isr invoked')
   const { data: tasks } = await supabase
     .from('todos')
     .select('*')
@@ -18,6 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
     .order('created_at', { ascending: true })
   return {
     props: { tasks, notices },
+    revalidate: 5,
   }
 }
 
@@ -26,11 +27,11 @@ type StaticProps = {
   notices: Notice[]
 }
 
-const Ssg: NextPage<StaticProps> = ({ tasks, notices }) => {
+const Isr: NextPage<StaticProps> = ({ tasks, notices }) => {
   const router = useRouter()
   return (
-    <Layout title="SSG">
-      <p className="mb-3 text-blue-500">SSG</p>
+    <Layout title="ISR">
+      <p className="mb-3 text-indigo-500">ISR</p>
       <ul className="mb-3">
         {tasks.map((task) => {
           return (
@@ -50,13 +51,13 @@ const Ssg: NextPage<StaticProps> = ({ tasks, notices }) => {
         })}
       </ul>
       <Link href="/ssr" prefetch={false}>
-        <a className=" my-3 text-xs">Link to ssr</a>
+        <a className="my-3 text-xs"> Link to ssr</a>
       </Link>
       <button className="mb-3 text-xs" onClick={() => router.push('/ssr')}>
-        Router to ssr
+        Route to ssr
       </button>
     </Layout>
   )
 }
 
-export default Ssg
+export default Isr

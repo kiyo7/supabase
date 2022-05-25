@@ -5,8 +5,8 @@ type State = {
   editedTask: EditedTask
   editedNotice: EditedNotice
   updateEditedTask: (payload: EditedTask) => void
-  updateEditedNotice: (payload: EditedNotice) => void
   resetEditedTask: () => void
+  updateEditedNotice: (payload: EditedNotice) => void
   resetEditedNotice: () => void
 }
 

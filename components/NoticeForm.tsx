@@ -40,7 +40,7 @@ const NoticeForm: React.FC = () => {
       />
       <button
         type="submit"
-        className="ml-2 rounded bg-indigo-600 px-3 py-2 text-sm font-medium hover:bg-indigo-700 disabled:bg-gray-500"
+        className="ml-2 rounded bg-indigo-600 px-3 py-2 text-sm font-medium text-white hover:bg-indigo-700 disabled:bg-gray-500"
         disabled={flag}
       >
         {editedNotice.id ? 'Update' : 'Create'}
